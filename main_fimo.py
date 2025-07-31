@@ -5,9 +5,9 @@ import sys
 
 seq_motif = sys.argv[1]
 # Define paths
-jaspar_folder = "jaspar_op1k"  # Path to the folder containing 1000 .meme files
-fasta_file = "motifs_with_p_vals_and_seqs_5_dist_"+seq_motif+".fa"  # Path to the RNA sequences file
-fimo_output_folder = "fimo_results_motifs_20_"+seq_motif  # Output folder for FIMO results
+jaspar_folder = "JASPAR2022_CORE_non-redundant_pfms_meme"  # Path to the folder containing .meme files
+fasta_file = "motifs_with_p_vals_and_seqs_10_dist_"+seq_motif+".fa"  # Path to the RNA sequences file
+fimo_output_folder = "fimo_results_motifs_30_"+seq_motif  # Output folder for FIMO results
 
 # Create FIMO output directory if it doesn't exist
 if not os.path.exists(fimo_output_folder):

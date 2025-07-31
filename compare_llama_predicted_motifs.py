@@ -29,7 +29,7 @@ for ind in range(len(df.index)):
 	print(octamer_list)
 """
 
-file = open("nohup2.out","r")
+file = open("nohup.out","r")
 for line in file.readlines():
 	if line.find("predicted_positive_vocab")!=-1:
 		positive_flag = 1

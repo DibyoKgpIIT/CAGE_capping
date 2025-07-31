@@ -6,7 +6,8 @@ from sklearn.model_selection import train_test_split
 
 arg1 = str(sys.argv[1])
 arg2 = str(sys.argv[2])
-df1 = pd.read_csv("cage_combined_hg19_chromosomes_combined_1024_context_window.csv")
+arg3 = str(sys.argv[3])
+df1 = pd.read_csv("cage_combined_hg19_chromosomes_combined_"+arg3+"_context_window.csv")
 
 """
 sentences = []
@@ -44,7 +45,7 @@ test2 = pd.DataFrame()
 test2["sequence"] = test["fasta_seq"].to_list()
 test2["label"] = test["cage_tag"].to_list()
 
-dir = "hg19_1024_"+arg1+"_"+arg2
+dir = "hg19_"+arg3+"_"+arg1+"_"+arg2
 os.mkdir(dir)
 train2.to_csv(os.path.join(dir,"train.csv"),index=False)
 dev2.to_csv(os.path.join(dir,"dev.csv"),index=False)
