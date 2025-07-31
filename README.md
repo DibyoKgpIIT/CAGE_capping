@@ -18,16 +18,29 @@ TORCH_CUDA_ARCH_LIST="7.5" pip install flash_attn --no_cache_dir --no_build_isol
 --test_file "hg19_1024_1_2/test.csv"
 --num_cpu 8
 --sequence_length 1024
-9. Execute the torch run main code for pretraining using llama + relora
+9. Perform the llama warmup steps:
+   export DATA_PATH=<path_to_preprocessed_data>
+   torchrun --nproc-per-node 1 torchrun_main.py \
+       --model_config configs/llama_20m_50k.json \
+       --dataset_path $DATA_PATH \
+       --batch_size 8 \
+       --total_batch_size 16 \
+       --lr 5e-4 \
+       --max_length 1024 \
+       --save_every 1000 \
+       --eval_every 1000 \
+       --num_training_steps 1000
+       --tags warm_start_20M_50K
+10. Execute the torch run main code for pretraining using llama + relora
    torchrun --nproc_per_node 1 torchrun_main.py
    --model_config configs/llama_20m_50k.json
-   --batch_size 8
-   --total_batch_size 16
+   --batch_size 16
+   --total_batch_size 32
    --lr 1e-3
    --max_length 1024
    --use_peft True
-   --relora 3000
-   --cycle_length 3000
+   --relora 4000
+   --cycle_length 4000
    --restart_warmup_steps 100
    --schedular cosine_restarts
    --warm_steps 500
@@ -37,9 +50,12 @@ TORCH_CUDA_ARCH_LIST="7.5" pip install flash_attn --no_cache_dir --no_build_isol
    --eval_every 1000
    --dataset_path $DATA_PATH
    --warmed_up_model checkpoints/___/___
-10. Execute the finetuning using llama + lora:
+11. Execute the finetuning using llama + lora:
    python3 run_glue.py hg19_1024_1_2.json
-11. Get the prediction and the attention weights:
+12. Get the prediction and the attention weights:
    python3 run_glue_predict_with_postprocessing.py ft_data.json
-12. To get the predicted motifs in the ascending order of p-value:
+13. To get the predicted motifs in the ascending order of p-value:
    python3 compare_llama_predicted_motifs.py
+14.Install fimo using the installation instructions in this page: https://meme-suite.org/meme/doc/install.html?man_type=web.
+    Execute the following code to get the TF motifs matching the sequnece motifs:  
+    python3 main_fimo.py [sequence_motif_octamer]
