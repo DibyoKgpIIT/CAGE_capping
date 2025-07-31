@@ -1,4 +1,4 @@
-Please cite our paper 
+### Please cite our paper 
 "A Transformer based method for the Cap Analysis of 1 Gene Expression and Gene Expression Tag associated 2 5’ cap site prediction in RNA 3"
 when it is published.
 Authors:
@@ -11,8 +11,18 @@ West Bengal, India-721302 \
 Chandrama Mukherjee \
 Institute of Health Sciences, Presidency University, Kolkata, West Bengal, India - 700073 \
 Pralay Mitra (Corresponding Author) \
-Department of Computer Science and Engineering, Indian Institute of Technology Kharagpur, \
-Here are the steps for reproducing our results.
+Department of Computer Science and Engineering, Indian Institute of Technology Kharagpur.
+### Third-Party Code Acknowledgments
+
+This repository includes modified components from:
+
+- [Hugging Face Transformers](https://github.com/huggingface/transformers)  
+  Licensed under the Apache License 2.0.
+
+- [ReLoRA](https://github.com/Guitaricet/relora)  
+  Licensed under the Apache License 2.0.
+All modifications are documented in the code and this repository fully complies with the original licenses.
+### Here are the steps for reproducing our results.
 1. Create the capping sequences for use in later steps:
    python3 preprocess_and_create_capping_dataset.py [CONTEXT_WINDOW] [1] [2]  \
    where [CONTEXT_WINDOW] stands for the length of the sequence fragment on which prediction would be made, [1] stands for chromosome number c, and [2] stands \
