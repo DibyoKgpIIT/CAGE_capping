@@ -4,20 +4,20 @@
 4. Install flash attention using:
 TORCH_CUDA_ARCH_LIST="7.5" pip install flash_attn --no_cache_dir --no_build_isolation
 5. Execute the pretokenizer:
---save_dir "hg19_512_1_2_ds"
+--save_dir "hg19_1024_1_2_ds"
 --tokenizer "EleutherAI/gpt_neox_20b"
---train_file "hg19_512_1_2/train.csv"
---validation_file "hg19_512_1_2/val.csv"
---test_file "hg19_512_1_2/test.csv"
+--train_file "hg19_1024_1_2/train.csv"
+--validation_file "hg19_1024_1_2/dev.csv"
+--test_file "hg19_1024_1_2/test.csv"
 --num_cpu 8
---sequence_length 512
-6. Execute the torch run main code
+--sequence_length 1024
+6. Execute the torch run main code for pretraining using llama + relora
    torchrun --nproc_per_node 1 torchrun_main.py
    --model_config configs/llama_20m_50k.json
    --batch_size 8
    --total_batch_size 16
    --lr 1e-3
-   --max_length 512
+   --max_length 1024
    --use_peft True
    --relora 3000
    --cycle_length 3000
@@ -30,5 +30,9 @@ TORCH_CUDA_ARCH_LIST="7.5" pip install flash_attn --no_cache_dir --no_build_isol
    --eval_every 1000
    --dataset_path $DATA_PATH
    --warmed_up_model checkpoints/___/___
-   
- 
+7. Execute the finetuning using llama + lora:
+   python3 run_glue.py hg19_1024_1_2.json
+8. Get the prediction and the attention weights:
+   python3 run_glue_predict_with_postprocessing.py ft_data.json
+9. To get the predicted motifs in the ascending order of p-value:
+   python3 compare_llama_predicted_motifs.py
