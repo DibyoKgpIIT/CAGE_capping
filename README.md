@@ -1,3 +1,18 @@
+Please cite our paper 
+"A Transformer based method for the Cap Analysis of 1 Gene Expression and Gene Expression Tag associated 2 5’ cap site prediction in RNA 3"
+when it is published.
+Authors:
+Dibya Kanti Haldar \
+Centre for Computational and Data Sciences, Indian Institute of Technology Kharagpur, West
+Bengal, India-721302 \
+Avik Pramanick \
+Department of Computer Science and Engineering, Indian Institute of Technology Kharagpur,
+West Bengal, India-721302 \
+Chandrama Mukherjee \
+Institute of Health Sciences, Presidency University, Kolkata, West Bengal, India - 700073 \
+Pralay Mitra (Corresponding Author) \
+Department of Computer Science and Engineering, Indian Institute of Technology Kharagpur, \
+Here are the steps for reproducing our results.
 1. Create the capping sequences for use in later steps:
    python3 preprocess_and_create_capping_dataset.py [CONTEXT_WINDOW] [1] [2]  \
    where [CONTEXT_WINDOW] stands for the length of the sequence fragment on which prediction would be made, [1] stands for chromosome number c, and [2] stands \
@@ -103,7 +118,7 @@ TORCH_CUDA_ARCH_LIST="7.5" pip install flash_attn --no_cache_dir --no_build_isol
 }  \
 Here [1], [2] and [CONTEXT_WINDOW] hold the same meaning as step 3. \
 The finetuned checkpoints will get saved in a folder named "trainer_output" \
-You can change the checkpoint folder name to something like "hg19 _[CONTEXT_WINDOW] _[1] _[2]_output" \
+You can change the checkpoint folder name to something like "hg19 _[CONTEXT_WINDOW] _[1] _[2]_output"
 16. Get the prediction and the attention weights:
    nohup python3 run_glue_predict_with_postprocessing.py ft_data.json &
     The json file ft_data.json can be something like:
