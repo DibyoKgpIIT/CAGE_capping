@@ -33,9 +33,9 @@ TORCH_CUDA_ARCH_LIST="7.5" pip install flash_attn --no_cache_dir --no_build_isol
     python3 pretokenize.py \
    --save_dir "hg19_[CONTEXT_WINDOW]_ [1]_[2]_ds" \
    --tokenizer "EleutherAI/gpt_neox_20b" \
-   --train_file "hg19_[CONTEXT_WINDOW]_ [1]_[2]/train.csv" \
-   --validation_file "hg19[CONTEXT_WINDOW]_ [1]_[2]/dev.csv" \
-   --test_file "hg19[CONTEXT_WINDOW]_ [1]_[2]/test.csv"
+   --train_file "hg19 _[CONTEXT_WINDOW] _[1] _[2]/train.csv" \
+   --validation_file "hg19 _[CONTEXT_WINDOW] _[1] _[2]/dev.csv" \
+   --test_file "hg19 _[CONTEXT_WINDOW] _[1] _[2]/test.csv"
    --num_cpu 8 \
    --sequence_length [CONTEXT_WINDOW] \
    where [1], [2] and [CONTEXT_WINDOW] hold the same meaning as step 3.
