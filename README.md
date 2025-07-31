@@ -52,6 +52,27 @@ TORCH_CUDA_ARCH_LIST="7.5" pip install flash_attn --no_cache_dir --no_build_isol
    --warmed_up_model checkpoints/___/___
 11. Execute the finetuning using llama + lora:
    python3 run_glue.py hg19_1024_1_2.json
+   The json file can be defined as follows:
+   {
+		"model_name_or_path":"checkpoints/classic-waterfall-158/model_14197",
+      "tokenizer_name": "EleutherAI/gpt-neox-20b",
+		"use_fast_tokenizer":true,
+		"model_revision":"main",
+		"ignore_mismatched_sizes":false,
+      "max_seq_length":1024,
+      "overwrite_cache":false,
+      "pad_to_max_length":true,
+      "dataset_name":"hg19_1024_1_2_ds/None_EleutherAI_gpt-neox-20b_1024",
+      "do_train":true,
+      "do_predict":false,
+      "do_eval":true,
+		"eval_strategy":"steps",
+		"max_train_samples":300000,
+		"max_eval_samples":20000,
+		"num_train_epochs":5,
+		"eval_steps":1000,
+		"per_gpu_train_batch_size":32
+} 
 12. Get the prediction and the attention weights:
    python3 run_glue_predict_with_postprocessing.py ft_data.json
 13. To get the predicted motifs in the ascending order of p-value:
