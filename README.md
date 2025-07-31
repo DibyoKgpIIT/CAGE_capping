@@ -1,7 +1,7 @@
 ### Please cite our paper 
 "A Transformer based method for the Cap Analysis of 1 Gene Expression and Gene Expression Tag associated 2 5’ cap site prediction in RNA 3"
-when it is published.
-Authors:
+when it is published. \
+Authors: \
 Dibya Kanti Haldar \
 Centre for Computational and Data Sciences, Indian Institute of Technology Kharagpur, West
 Bengal, India-721302 \
@@ -48,7 +48,7 @@ All modifications are documented in the code and this repository fully complies 
    Outputs:
    "hg19 _[CONTEXT_WINDOW] _[1] _[2]/train.csv" \
    "hg19 _[CONTEXT_WINDOW] _[1] _[2]/dev.csv" \
-   "hg19 _[CONTEXT_WINDOW] _[1] _[2]/test.csv" \
+   "hg19 _[CONTEXT_WINDOW] _[1] _[2]/test.csv" 
 5. Create a ReLoRA env using pip or conda. Ensure python version >= 3.10
 6. Go to environemnet and execute pip install -r requirements.txt
 7. pip install -e .
@@ -105,8 +105,8 @@ TORCH_CUDA_ARCH_LIST="7.5" pip install flash_attn --no_cache_dir --no_build_isol
     Here [CONTEXT_WINDOW] holds the same meaning as step 3.
 15. Execute the finetuning using llama + lora:
    python3 run_glue.py hg19 _[CONTEXT_WINDOW] _[1] _[2].json
-   The json file "hg19 _[CONTEXT_WINDOW] _[1] _[2].json" can be defined as follows:
-   {
+   The json file "hg19 _[CONTEXT_WINDOW] _[1] _[2].json" can be defined as follows: \
+   { \
 		"model_name_or_path":"checkpoints/classic-waterfall-158/model_14197", \
       		"tokenizer_name": "EleutherAI/gpt-neox-20b", \
 		"use_fast_tokenizer":true, \
@@ -130,9 +130,9 @@ Here [1], [2] and [CONTEXT_WINDOW] hold the same meaning as step 3. \
 The finetuned checkpoints will get saved in a folder named "trainer_output" \
 You can change the checkpoint folder name to something like "hg19 _[CONTEXT_WINDOW] _[1] _[2]_output"
 16. Get the prediction and the attention weights:
-   nohup python3 run_glue_predict_with_postprocessing.py ft_data.json &
-    The json file ft_data.json can be something like:
-    {
+   nohup python3 run_glue_predict_with_postprocessing.py ft_data.json & \
+    The json file ft_data.json can be something like: \
+    { \
 		"model_name_or_path":"hg19 _[CONTEXT_WINDOW] _[1] _[2]_output/trainer_output", \
                 "tokenizer_name": "EleutherAI/gpt-neox-20b", \
 		"use_fast_tokenizer":true, \
