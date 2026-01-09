@@ -1,3 +1,5 @@
+### Go to the branch "verified" for updated code and README
+git checkout "verified"
 ### Please cite our paper 
 "A Transformer based method for the Cap Analysis of 1 Gene Expression and Gene Expression Tag associated 2 5’ cap site prediction in RNA 3"
 https://doi.org/10.1101/2025.09.21.677558
