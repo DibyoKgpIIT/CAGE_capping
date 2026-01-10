@@ -13,3 +13,6 @@ scipy
 evaluate
 packaging
 ninja
+scikit-learn
+pyfaidx
+transformers-interpret
