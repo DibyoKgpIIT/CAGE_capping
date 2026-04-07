@@ -1,6 +1,6 @@
 ### Please cite our paper 
 "A Transformer based method for the Cap Analysis of 1 Gene Expression and Gene Expression Tag associated 2 5’ cap site prediction in RNA 3"
-https://doi.org/10.1101/2025.09.21.677558
+https://doi.org/10.1080/15476286.2026.2629530
 Authors: \
 Dibya Kanti Haldar \
 Centre for Computational and Data Sciences, Indian Institute of Technology Kharagpur, West
